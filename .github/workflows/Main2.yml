@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      
+main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      
+name: Checkout code
+      uses: actions/checkout@v3
+
+      
+name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the default token or your PAT if needed
+        publish_dir: ./your-html-directory  # Update to the correct directory path
+        publish_branch: gh-pages
+        allow_empty_commit: false
+        keep_files: false
+        force_orphan: false
+        enable_jekyll: false
+        disable_nojekyll: false
+        exclude_assets: .github
